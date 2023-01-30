@@ -1,17 +1,18 @@
-import React ,{ useState } from 'react';
-import InputBox from '../Components/InputBox'
-import TodoList from '../Components/TodoItem';
-import TodoItemList from '../Components/TodoItemList'
+import React from 'react';
+import InputBox from '../components/InputBox';
+import ToDoItemList from '../components/TodoItemList';
 
-const Home = () => {
-   const [TodoList, setTodoList] = useState([]);
+const Home = () => (
+  <div className="home_container">
+    {/* ToDo Item을 추가할 수 있는 input 박스 */}
+    <InputBox />
 
-      <div className="home_container">
-         {/* ToDo Item을 추가할 수 있는 input 박스 */} 
-         <InputBox></InputBox>
+    {/* 할 일 Item 리스트 */}
+    <ToDoItemList />
 
-         <TodoItemList></TodoItemList>
-      </div>
-  };
-  
-  export default Home;
+    {/* 완료한 Item 리스트 */}
+    <ToDoItemList />
+  </div>
+);
+
+export default Home;

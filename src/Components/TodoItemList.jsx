@@ -1,7 +1,8 @@
 import React from 'react';
 import ToDoItem from './TodoItem';
+import '../App.css'
 
-const ToDoItemList = () => (
+const TodoItemList = () => (
   <div className="todoapp__list">
     <p className="todoapp__list-tit">제목</p>
     {/* 기능 구현 전, 임시로 아래와 같이 작성. 기능 개발시에는 map으로 컴포넌트 반환 */}
@@ -13,4 +14,4 @@ const ToDoItemList = () => (
   </div>
 );
 
-export default ToDoItemList;
+export default TodoItemList;
