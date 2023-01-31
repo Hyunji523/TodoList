@@ -58,6 +58,17 @@
   margin-bottom: 10px;
   height: 36px;
 }
+.modify-input{
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #f1f3f5;
+  padding: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+.modify-input:focus{
+  outline: none;
+}
 .todoapp__item:last-child {
   margin-bottom: 0;
 }
@@ -67,6 +78,13 @@
 .todoapp__item-ctx {
   flex: 1;
 }
+.todoapp__item-ctx_checked {
+  font-style: italic;
+  text-decoration: line-through;
+  color: #868e96;
+  flex: 1;
+}
+
 .todoapp__item-edit-btn,
 .todoapp__item-delete-btn {
   border: none;

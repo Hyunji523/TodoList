@@ -2,14 +2,25 @@ import React from 'react';
 import ToDoItem from './TodoItem';
 import '../App.css'
 
-const TodoItemList = () => (
+const TodoItemList = ({title, todoList, setTodoList, checkedList}) => (
   <div className="todoapp__list">
-    <p className="todoapp__list-tit">제목</p>
-    {/* 기능 구현 전, 임시로 아래와 같이 작성. 기능 개발시에는 map으로 컴포넌트 반환 */}
+    <p className="todoapp__list-tit">{title}</p>
     <ul className="todoapp__list-ul">
-      <ToDoItem />
-      <ToDoItem />
-      <ToDoItem />
+        {
+            todoList && //tdList가 있을 때만
+            todoList.map((todoItem) => {
+              // checkedList 값에 따라 '할 일 목록' 또는 '완료한 목록'을 출력
+              console.log(checkedList , todoItem.checked)
+              if(checkedList !== todoItem.checked) return null;
+                return (<ToDoItem
+                    key={todoItem.id}
+                    todoItem={todoItem}
+                    todoList={todoList}
+                    setTodoList={setTodoList}
+                />)
+
+            })
+        }
     </ul>
   </div>
 );
