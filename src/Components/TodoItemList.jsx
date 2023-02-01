@@ -10,7 +10,7 @@ const TodoItemList = ({title, todoList, setTodoList, checkedList}) => (
             todoList && //tdList가 있을 때만
             todoList.map((todoItem) => {
               // checkedList 값에 따라 '할 일 목록' 또는 '완료한 목록'을 출력
-              console.log(checkedList , todoItem.checked)
+            
               if(checkedList !== todoItem.checked) return null;
                 return (<ToDoItem
                     key={todoItem.id}

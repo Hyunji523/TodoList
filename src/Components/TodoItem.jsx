@@ -1,8 +1,10 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import '../App.css'
 
 let TodoList = ({todoItem, todoList, setTodoList})=>{
+
     const onChangeCheckbox = ()=>{
         const nextTodoList = todoList.map((item) => ({
             ...item,
@@ -15,6 +17,7 @@ let TodoList = ({todoItem, todoList, setTodoList})=>{
 
     const [modify, setModify] = useState(false);
     const [newText, setnewText] = useState('');
+    //수정모드로
     const modifyBtn = ()=>{
         setModify(true);
     }
@@ -22,6 +25,7 @@ let TodoList = ({todoItem, todoList, setTodoList})=>{
         //새로운 아이템 내용
         const nextTodoList = todoList.map((item)=>({
             ...item,
+            //todo 다시 생각해보기
             text: item.id === todoItem.id ? newText : item.text //새 아이템 내용
         }));
         setTodoList(nextTodoList); // 새 리스트 넣어
@@ -29,7 +33,9 @@ let TodoList = ({todoItem, todoList, setTodoList})=>{
     }
 
     const delBtn = ()=>{
-
+        const delList = todoList.filter( (item) => item.id !== todoItem.id);
+     
+        setTodoList(delList);    
     }
 
     return (
