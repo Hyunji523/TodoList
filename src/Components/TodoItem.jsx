@@ -21,8 +21,11 @@ let TodoList = ({todoItem, todoList, setTodoList})=>{
     const modifyInput = ()=>{
         //새로운 아이템 내용
         const nextTodoList = todoList.map((item)=>({
-
-        }))
+            ...item,
+            text: item.id === todoItem.id ? newText : item.text //새 아이템 내용
+        }));
+        setTodoList(nextTodoList); // 새 리스트 넣어
+        setModify(false); //수정완료
     }
 
     const delBtn = ()=>{
@@ -43,14 +46,14 @@ let TodoList = ({todoItem, todoList, setTodoList})=>{
                 !modify ? (<span 
                     className={!todoItem.checked ? "todoapp__item-ctx" : "todoapp__item-ctx_checked"}>
                         {todoItem.text}
-                </span>) : (<input className='modify-input' value={newText} onChange={modifyInput}/>)
+                </span>) : (<input className='modify-input' value={newText} onChange={ (e) => { setnewText(e.target.value); }}/>)
             }
 
             {/*  수정 버튼 */}
             {
                 !todoItem.checked ? (
                     modify ? (
-                    <button type="button" className="todoapp__item-edit-btn" > ✔️ </button> 
+                    <button type="button" className="todoapp__item-edit-btn" onClick={modifyInput}> ✔️ </button> 
                     ):(<button type="button" className="todoapp__item-edit-btn" onClick={modifyBtn}> 📝 </button>)
                 ) : null
             }
