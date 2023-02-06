@@ -1,9 +1,14 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { useState } from 'react';
 import '../App.css'
 
 let TodoList = ({todoItem, todoList, setTodoList})=>{
+
+    const onKeyPress = (e) => {
+        if (e.key === 'Enter'){
+            modifyInput();
+        }
+    }
 
     const onChangeCheckbox = ()=>{
         const nextTodoList = todoList.map((item) => ({
@@ -52,7 +57,7 @@ let TodoList = ({todoItem, todoList, setTodoList})=>{
                 !modify ? (<span 
                     className={!todoItem.checked ? "todoapp__item-ctx" : "todoapp__item-ctx_checked"}>
                         {todoItem.text}
-                </span>) : (<input className='modify-input' value={newText} onChange={ (e) => { setnewText(e.target.value); }}/>)
+                </span>) : (<input className='modify-input' value={newText} onChange={ (e) => { setnewText(e.target.value); }} onKeyDown={onKeyPress}/>)
             }
 
             {/*  수정 버튼 */}

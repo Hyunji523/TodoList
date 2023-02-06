@@ -16,6 +16,11 @@ let InputBox = ({todoList, setTodoList})=>{ //부모 컴포넌트(Home.jsx)로 �
         setText(e.target.value)
     }
 
+    const onKeyPress = (e) => {
+        if (e.key === 'Enter'){
+            onClickAddBtn();
+        }
+    }
     let onClickAddBtn = ()=>{
         //todlist에 값 추가
         const nextTodo = todoList.concat({ //concat 함수는 인자로 받은 값을 배열에 추가하여 새로운 배열을 반환한다.
@@ -40,6 +45,7 @@ let InputBox = ({todoList, setTodoList})=>{ //부모 컴포넌트(Home.jsx)로 �
                 value={text}
                 ref={inputRef}
                 onChange={onChangeInput}
+                onKeyDown={onKeyPress}
             />
             {/* 입력 후 아이템 추가 버튼 */}
             <button type="submit" className="todoapp__inputbox-add-btn" onClick={onClickAddBtn}>
